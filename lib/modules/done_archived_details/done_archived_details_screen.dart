@@ -42,9 +42,7 @@ class _RequestDetailsState extends State<DoneArchivedDetailsScreen> {
     return BlocProvider(
       create: (context) => RequestCubit(),
       child: BlocConsumer<RequestCubit, RequestStates>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(),
@@ -77,7 +75,7 @@ class _RequestDetailsState extends State<DoneArchivedDetailsScreen> {
                             'Request From : ',
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyLarge
                                 ?.copyWith(fontSize: 22.0),
                           ),
                           Container(
@@ -325,7 +323,7 @@ class _RequestDetailsState extends State<DoneArchivedDetailsScreen> {
         ),
         child: Text(
           text,
-          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontSize: 20.0,
                 fontWeight: FontWeight.normal,
               ),

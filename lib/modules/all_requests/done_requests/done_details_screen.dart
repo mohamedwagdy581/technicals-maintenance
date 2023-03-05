@@ -39,9 +39,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
     return BlocProvider(
       create: (context) => RequestCubit(),
       child: BlocConsumer<RequestCubit, RequestStates>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(),
@@ -64,7 +62,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
                     itemBuilder: (context, index) {
                       var latitude = storeDocs[widget.currentIndex]['latitude'];
                       var longitude =
-                      storeDocs[widget.currentIndex]['longitude'];
+                          storeDocs[widget.currentIndex]['longitude'];
                       return Column(
                         children: [
                           SizedBox(
@@ -74,7 +72,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
                             'Request From : ',
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyLarge
                                 ?.copyWith(fontSize: 22.0),
                           ),
                           Container(
@@ -94,7 +92,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
                                         text: 'Company Name', context: context),
                                     customTableValueCell(
                                       text: storeDocs[widget.currentIndex]
-                                      ['companyName'],
+                                          ['companyName'],
                                     ),
                                   ],
                                 ),
@@ -104,7 +102,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
                                         text: 'City', context: context),
                                     customTableValueCell(
                                       text: storeDocs[widget.currentIndex]
-                                      ['city'],
+                                          ['city'],
                                     ),
                                   ],
                                 ),
@@ -114,7 +112,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
                                         text: 'School', context: context),
                                     customTableValueCell(
                                       text: storeDocs[widget.currentIndex]
-                                      ['school'],
+                                          ['school'],
                                     ),
                                   ],
                                 ),
@@ -125,7 +123,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
                                         context: context),
                                     customTableValueCell(
                                       text: storeDocs[widget.currentIndex]
-                                      ['customerPhone'],
+                                          ['customerPhone'],
                                     ),
                                   ],
                                 ),
@@ -136,7 +134,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
                                         context: context),
                                     customTableValueCell(
                                       text: storeDocs[widget.currentIndex]
-                                      ['technicalName'],
+                                          ['technicalName'],
                                     ),
                                   ],
                                 ),
@@ -147,7 +145,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
                                         context: context),
                                     customTableValueCell(
                                       text: storeDocs[widget.currentIndex]
-                                      ['technicalPhone'],
+                                          ['technicalPhone'],
                                     ),
                                   ],
                                 ),
@@ -208,7 +206,7 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
                                         text: 'Consultation', context: context),
                                     customTableValueCell(
                                       text: storeDocs[widget.currentIndex]
-                                      ['consultation'],
+                                          ['consultation'],
                                     ),
                                   ],
                                 ),
@@ -244,10 +242,10 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
         ),
         child: Text(
           text,
-          style: Theme.of(context).textTheme.bodyText1?.copyWith(
-            fontSize: 20.0,
-            fontWeight: FontWeight.normal,
-          ),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                fontSize: 20.0,
+                fontWeight: FontWeight.normal,
+              ),
         ),
       );
 
@@ -296,5 +294,4 @@ class _RequestDetailsState extends State<DoneDetailsScreen> {
           ),
         ),
       );
-
 }

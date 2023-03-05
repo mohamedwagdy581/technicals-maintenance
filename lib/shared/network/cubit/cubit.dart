@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
@@ -25,7 +27,13 @@ class AppCubit extends Cubit<AppStates> {
   void getUserData() {
     emit(AppGetUserLoadingState());
 
-    FirebaseFirestore.instance.collection(city!).doc(city).collection('users').doc(uId).get().then((value) {
+    FirebaseFirestore.instance
+        .collection(city!)
+        .doc(city)
+        .collection('users')
+        .doc(uId)
+        .get()
+        .then((value) {
       userModel = UserModel.fromJson(value.data()!);
       emit(AppGetUserSuccessState());
     }).catchError((error) {
@@ -39,19 +47,20 @@ class AppCubit extends Cubit<AppStates> {
   // Get Document IDs to start access to all data in document in firebase
   List<String> docIDs = [];
 
-  Future getDocId() async
-  {
+  Future getDocId() async {
     docIDs.clear();
     emit(AppGetDocIDsLoadingState());
-    await FirebaseFirestore.instance.collection(city!).doc(city).collection('requests').get().then((snapshot)
-    {
+    await FirebaseFirestore.instance
+        .collection(city!)
+        .doc(city)
+        .collection('requests')
+        .get()
+        .then((snapshot) {
       for (var document in snapshot.docs) {
         docIDs.add(document.reference.id);
       }
       emit(AppGetDocIDsSuccessState());
-
-    }).catchError((error)
-    {
+    }).catchError((error) {
       emit(AppGetDocIDsErrorState(error));
     });
   }
@@ -59,45 +68,51 @@ class AppCubit extends Cubit<AppStates> {
   // Get Done Document IDs to start access to all data in document in firebase
   List<String> doneDocIDs = [];
 
-  Future getDoneDocId({required String city}) async
-  {
+  Future getDoneDocId({required String city}) async {
     emit(AppGetDoneDocIDsLoadingState());
     doneDocIDs.clear();
-    await FirebaseFirestore.instance.collection(city).doc(city).collection('technicals').doc(userUID).collection('doneRequests').get().then((
-        snapshot) {
+    await FirebaseFirestore.instance
+        .collection(city)
+        .doc(city)
+        .collection('technicals')
+        .doc(userUID)
+        .collection('doneRequests')
+        .get()
+        .then((snapshot) {
       for (var document in snapshot.docs) {
         doneDocIDs.add(document.reference.id);
         emit(AppGetDoneDocIDsSuccessState());
       }
-    }).catchError((error)
-    {
+    }).catchError((error) {
       emit(AppGetDoneDocIDsErrorState(error));
     });
   }
 
-
   // Get Archived Document IDs to start access to all data in document in firebase
   List<String> archivedDocIDs = [];
 
-  Future getArchivedDocId({required String city}) async
-  {
+  Future getArchivedDocId({required String city}) async {
     archivedDocIDs.clear();
     emit(AppGetArchivedDocIDsLoadingState());
-    await FirebaseFirestore.instance.collection(city).doc(city).collection('technicals').doc(userUID).collection('archivedRequests').get().then((
-        snapshot) {
+    await FirebaseFirestore.instance
+        .collection(city)
+        .doc(city)
+        .collection('technicals')
+        .doc(userUID)
+        .collection('archivedRequests')
+        .get()
+        .then((snapshot) {
       for (var document in snapshot.docs) {
         archivedDocIDs.add(document.reference.id);
         emit(AppGetArchivedDocIDsSuccessState());
       }
-    }).catchError((error)
-    {
+    }).catchError((error) {
       emit(AppGetArchivedDocIDsErrorState(error));
     });
   }
 
   String profileImageUrl = '';
-  void pickUploadProfileImage() async
-  {
+  void pickUploadProfileImage() async {
     final image = await ImagePicker().pickImage(
       source: ImageSource.gallery,
       maxWidth: 512,
@@ -105,28 +120,26 @@ class AppCubit extends Cubit<AppStates> {
       imageQuality: 75,
     );
     final imagePermanent = await saveImagePermanently(image!.path);
-    Reference reference = FirebaseStorage.instance.ref().child('profilepic.jpg');
+    Reference reference =
+        FirebaseStorage.instance.ref().child('profilepic.jpg');
     await reference.putFile(File(image.path));
-    reference.getDownloadURL().then((value)
-    {
+    reference.getDownloadURL().then((value) {
       profileImageUrl = value;
       CashHelper.saveData(key: profileImage, value: imagePermanent.path);
       if (kDebugMode) {
         print(value);
       }
       emit(AppProfileImagePickedSuccessState());
-    }).catchError((error)
-    {
+    }).catchError((error) {
       if (kDebugMode) {
         print(error.toString());
       }
       emit(AppProfileImagePickedErrorState());
     });
-
   }
+
   // To Store Image in Directory Path
-  Future<File> saveImagePermanently(String imagePath) async
-  {
+  Future<File> saveImagePermanently(String imagePath) async {
     final directory = await getApplicationDocumentsDirectory();
     final name = basename(imagePath);
     final image = File('${directory.path}/$name');
@@ -135,8 +148,7 @@ class AppCubit extends Cubit<AppStates> {
 
   // Cover Picked image
   String coverImageUrl = '';
-  void pickUploadCoverImage() async
-  {
+  void pickUploadCoverImage() async {
     final image = await ImagePicker().pickImage(
       source: ImageSource.gallery,
       maxWidth: 512,
@@ -145,21 +157,18 @@ class AppCubit extends Cubit<AppStates> {
     );
     Reference reference = FirebaseStorage.instance.ref().child('coverpic.jpg');
     await reference.putFile(File(image!.path));
-    reference.getDownloadURL().then((value)
-    {
+    reference.getDownloadURL().then((value) {
       coverImageUrl = value;
       if (kDebugMode) {
         print(value);
       }
       emit(AppCoverImagePickedSuccessState());
-    }).catchError((error)
-    {
+    }).catchError((error) {
       if (kDebugMode) {
         print(error.toString());
       }
       emit(AppCoverImagePickedErrorState());
     });
-
   }
 
   // Function to Change Theme mode
@@ -176,6 +185,4 @@ class AppCubit extends Cubit<AppStates> {
       });
     }
   }
-
-
 }

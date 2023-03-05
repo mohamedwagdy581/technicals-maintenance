@@ -1,3 +1,6 @@
+// ignore_for_file: unused_field, file_names, unused_local_variable, unnecessary_null_comparison, deprecated_member_use
+
+import 'package:flutter/foundation.dart';
 import 'package:location/location.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -56,23 +59,23 @@ class LocationServices {
     if (await canLaunchUrlString(encodedUrl) != null) {
       await launchUrlString(encodedUrl);
     } else {
-      print('Could not Launch $encodedUrl');
+      if (kDebugMode) {
+        print('Could not Launch $encodedUrl');
+      }
       throw 'Could not Launch $encodedUrl';
     }
   }
 }
 
-class MapUtils
-{
+class MapUtils {
   MapUtils._();
-  static Future<void> openMap({required double latitude, required double longitude}) async
-  {
-    String googleUrl = 'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
-    if(await canLaunch(googleUrl) != null)
-    {
+  static Future<void> openMap(
+      {required double latitude, required double longitude}) async {
+    String googleUrl =
+        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+    if (await canLaunch(googleUrl) != null) {
       await launch(googleUrl);
-    }else
-    {
+    } else {
       throw 'Could not Launch $googleUrl';
     }
   }

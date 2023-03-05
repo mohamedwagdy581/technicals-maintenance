@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
@@ -20,30 +22,28 @@ class AboutUsScreen extends StatelessWidget {
           SizedBox(
             height: height * 0.2,
           ),
-
           const CircleAvatar(
             radius: 60.0,
-            backgroundImage: AssetImage('assets/images/baruziklogo.png',),
+            backgroundImage: AssetImage(
+              'assets/images/baruziklogo.png',
+            ),
             backgroundColor: Colors.transparent,
           ),
-
           SizedBox(
             height: height * 0.05,
           ),
-
           Text(
             'مؤسسة عبدالعزيز بارزيق',
             style: Theme.of(context).textTheme.bodyLarge,
           ),
-
           SizedBox(
             height: height * 0.06,
           ),
-
           defaultSigningInRowButton(
-            rowBackgroundColor: AppCubit.get(context).isDark ? const Color(0xffF4F2F2) : Colors.deepOrange,
-            onPressed: () async
-            {
+            rowBackgroundColor: AppCubit.get(context).isDark
+                ? const Color(0xffF4F2F2)
+                : Colors.deepOrange,
+            onPressed: () async {
               const link = WhatsAppUnilink(
                 phoneNumber: '+966-540814455',
                 text: "مرحبا بارزيق, لدي مشكله اريد حلها!!",
@@ -55,11 +55,11 @@ class AboutUsScreen extends StatelessWidget {
             },
             title: 'تواصل معنا عبر الواتساب',
             titleStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
-              color: AppCubit.get(context).isDark ? Colors.black : Colors.white,
-              fontSize: 18.0
-            ),
+                color:
+                    AppCubit.get(context).isDark ? Colors.black : Colors.white,
+                fontSize: 18.0),
             icon: Icons.whatshot,
-            iconColor:  const Color(0xff199606),
+            iconColor: const Color(0xff199606),
             width: width * 0.04,
           ),
         ],

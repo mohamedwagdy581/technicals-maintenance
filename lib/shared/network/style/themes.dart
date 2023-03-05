@@ -16,7 +16,6 @@ ThemeData darkTheme = ThemeData(
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: HexColor('333739'),
       statusBarBrightness: Brightness.dark,
-
     ),
     backgroundColor: HexColor('333739'),
     titleSpacing: 20.0,
@@ -32,7 +31,6 @@ ThemeData darkTheme = ThemeData(
   ),
   drawerTheme: DrawerThemeData(
     backgroundColor: HexColor('333739'),
-
   ),
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     type: BottomNavigationBarType.fixed,
@@ -42,7 +40,7 @@ ThemeData darkTheme = ThemeData(
     backgroundColor: HexColor('333739'),
   ),
   textTheme: const TextTheme(
-    bodyText1: TextStyle(
+    bodyLarge: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
       color: Colors.white,
@@ -55,10 +53,8 @@ ThemeData lightTheme = ThemeData(
   inputDecorationTheme: const InputDecorationTheme(
       border: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black,
-          )
-      )
-  ),
+    color: Colors.black,
+  ))),
   primarySwatch: Colors.blue,
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
@@ -85,7 +81,7 @@ ThemeData lightTheme = ThemeData(
     selectedItemColor: Colors.blue,
   ),
   textTheme: const TextTheme(
-    bodyText1: TextStyle(
+    bodyLarge: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
       color: Colors.black,

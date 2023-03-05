@@ -41,9 +41,7 @@ class _RequestDetailsState extends State<ArchivedDetailsScreen> {
     return BlocProvider(
       create: (context) => RequestCubit(),
       child: BlocConsumer<RequestCubit, RequestStates>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(),
@@ -76,7 +74,7 @@ class _RequestDetailsState extends State<ArchivedDetailsScreen> {
                             'Request From : ',
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyLarge
                                 ?.copyWith(fontSize: 22.0),
                           ),
                           Container(
@@ -227,15 +225,14 @@ class _RequestDetailsState extends State<ArchivedDetailsScreen> {
                                 FinishingRequestScreen(
                                   id: widget.id,
                                   companyName: storeDocs[widget.currentIndex]
-                                  ['companyName'],
-                                  city: storeDocs[widget.currentIndex]
-                                  ['city'],
+                                      ['companyName'],
+                                  city: storeDocs[widget.currentIndex]['city'],
                                   school: storeDocs[widget.currentIndex]
-                                  ['school'],
+                                      ['school'],
                                   customerPhone: storeDocs[widget.currentIndex]
-                                  ['customerPhone'],
+                                      ['customerPhone'],
                                   machine: storeDocs[widget.currentIndex]
-                                  ['machineImage'],
+                                      ['machineImage'],
                                   technicalPhone: technicalPhone!,
                                 ),
                               );
@@ -271,7 +268,7 @@ class _RequestDetailsState extends State<ArchivedDetailsScreen> {
         ),
         child: Text(
           text,
-          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontSize: 20.0,
                 fontWeight: FontWeight.normal,
               ),

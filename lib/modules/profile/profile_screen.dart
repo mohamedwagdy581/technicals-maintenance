@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +60,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getUserData();
   }
@@ -218,7 +219,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             textAlign: TextAlign.center,
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyLarge
                                 ?.copyWith(fontSize: 17),
                           ),
                           SizedBox(
@@ -228,7 +229,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             'Email : ${userData!.email}',
                             textAlign: TextAlign.center,
                             style:
-                                Theme.of(context).textTheme.caption?.copyWith(
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
                                       fontSize: 14.0,
                                       color: cubit.isDark
                                           ? Colors.black
@@ -248,7 +249,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 'Update',
-                                style: Theme.of(context).textTheme.bodyText1,
+                                style: Theme.of(context).textTheme.bodyLarge,
                               ),
                             ),
                           ),
@@ -266,7 +267,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   label: phone,
                                   textStyle: Theme.of(context)
                                       .textTheme
-                                      .subtitle1
+                                      .titleMedium
                                       ?.copyWith(
                                         color: AppCubit.get(context).isDark
                                             ? Colors.black
@@ -317,7 +318,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           // TextFormField of Password
                           Row(
                             children: [
-
                               Expanded(
                                 flex: 2,
                                 child: Container(
@@ -419,7 +419,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
             label: 'Email',
-            textStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
+            textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: AppCubit.get(context).isDark
                       ? Colors.black
                       : Colors.white,
@@ -459,8 +459,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           context: context,
           builder: (context) {
             return const AlertDialog(
-              content:
-                  Text('Please check your email to reset your Password'),
+              content: Text('Please check your email to reset your Password'),
             );
           });
     } on FirebaseAuthException catch (error) {
@@ -472,6 +471,5 @@ class _ProfileScreenState extends State<ProfileScreen> {
             );
           });
     }
-
   }
 }

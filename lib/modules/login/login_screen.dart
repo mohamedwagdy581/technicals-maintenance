@@ -42,26 +42,24 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocProvider(
       create: (BuildContext context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(
-        listener: (context, state)
-        {
+        listener: (context, state) {
           // Listener in Login State if Error Show toast with error
-          if(state is LoginErrorState)
-          {
+          if (state is LoginErrorState) {
             showToast(
               message: state.error,
               state: ToastStates.ERROR,
             );
           }
           // Listener in Login state if success save uId in CacheHelper and navigate to HomeLayout
-          if(state is LoginSuccessState)
-          {
+          if (state is LoginSuccessState) {
             // CacheHelper to save token or Authorization and navigate and finish to the main home screen
             CashHelper.saveData(
               key: 'uId',
               value: state.uId,
             ).then((value) {
               CashHelper.saveData(key: 'city', value: state.city);
-              CashHelper.saveData(key: 'technicalPhone', value: state.technicalPhone);
+              CashHelper.saveData(
+                  key: 'technicalPhone', value: state.technicalPhone);
               navigateAndFinish(
                 context,
                 const HomeLayout(),
@@ -86,13 +84,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         Text(
                           'Login',
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .bodyText1
-                              ?.copyWith(
-                            fontSize: 35.0,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    fontSize: 35.0,
+                                  ),
                         ),
                         //SizedBox between Login Text and Login to Start Text
                         SizedBox(
@@ -102,10 +97,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         // subtitle login in the screen
                         Text(
                           'Login to start connect with your company',
-                          style: Theme
-                              .of(context)
+                          style: Theme.of(context)
                               .textTheme
-                              .bodyText1
+                              .bodyLarge
                               ?.copyWith(color: Colors.grey),
                         ),
                         SizedBox(
@@ -117,23 +111,26 @@ class _LoginScreenState extends State<LoginScreen> {
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
                           label: 'Email Address',
-                          textStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            color:
-                              AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                          ),
+                          textStyle:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppCubit.get(context).isDark
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                           validator: (String? value) {
-                            if(value!.isEmpty)
-                            {
+                            if (value!.isEmpty) {
                               return 'Please enter your email address';
                             }
-                            if(!RegExp("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value))
-                            {
+                            if (!RegExp("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                .hasMatch(value)) {
                               return 'Please Enter a Valid Email';
                             }
                             return null;
                           },
                           prefix: Icons.email_outlined,
-                          prefixColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
+                          prefixColor: AppCubit.get(context).isDark
+                              ? Colors.black
+                              : Colors.white,
                         ),
 
                         //SizedBox between Email and Password TextFormField
@@ -154,7 +151,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             trailing: DropdownButton<String>(
-                              hint: const Text('Area',textAlign: TextAlign.end,),
+                              hint: const Text(
+                                'Area',
+                                textAlign: TextAlign.end,
+                              ),
                               value: areas[_areaValue],
                               items: areas.map((String areaValue) {
                                 return DropdownMenuItem<String>(
@@ -177,30 +177,33 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: height * 0.02,
                         ),
 
-
                         // TextFormField of Password
                         defaultTextFormField(
                           controller: passwordController,
                           keyboardType: TextInputType.visiblePassword,
                           label: 'Password',
-                          textStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            color:
-                            AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                          ),
+                          textStyle:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppCubit.get(context).isDark
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                           validator: (String? value) {
-                            if(value!.isEmpty)
-                            {
+                            if (value!.isEmpty) {
                               return 'Please enter your email address';
                             }
                             return null;
                           },
                           secure: LoginCubit.get(context).isPasswordShown,
                           prefix: Icons.password,
-                          prefixColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
+                          prefixColor: AppCubit.get(context).isDark
+                              ? Colors.black
+                              : Colors.white,
                           suffix: LoginCubit.get(context).suffix,
-                          suffixColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                          suffixPressed: ()
-                          {
+                          suffixColor: AppCubit.get(context).isDark
+                              ? Colors.black
+                              : Colors.white,
+                          suffixPressed: () {
                             LoginCubit.get(context).changePasswordVisibility();
                           },
                         ),
@@ -212,27 +215,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         // Login Button
                         ConditionalBuilder(
                           condition: state is! LoginLoadingState,
-                          builder: (context) =>
-                              Container(
-                                alignment: Alignment.center,
-                                child: defaultButton(
-                                  onPressed: () {
-                                    if(formKey.currentState!.validate())
-                                    {
-                                      LoginCubit.get(context).userLogin(
-                                        email: emailController.text.trim(),
-                                        city: _area,
-                                        password: passwordController.text.trim(),
-                                      );
-                                    }
-                                  },
-                                  text: 'Login',
-                                  backgroundColor:
-                                    AppCubit.get(context).isDark ? Colors.green : Colors.deepOrange,
-                                ),
-                              ),
+                          builder: (context) => Container(
+                            alignment: Alignment.center,
+                            child: defaultButton(
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  LoginCubit.get(context).userLogin(
+                                    email: emailController.text.trim(),
+                                    city: _area,
+                                    password: passwordController.text.trim(),
+                                  );
+                                }
+                              },
+                              text: 'Login',
+                              backgroundColor: AppCubit.get(context).isDark
+                                  ? Colors.green
+                                  : Colors.deepOrange,
+                            ),
+                          ),
                           fallback: (context) =>
-                          const Center(child: CircularProgressIndicator()),
+                              const Center(child: CircularProgressIndicator()),
                         ),
 
                         //SizedBox between Login Button and Don't have an account
@@ -246,10 +248,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Text(
                               'Don\'t have an account?',
-                              style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                                color:
-                                AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                    color: AppCubit.get(context).isDark
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                             ),
                             defaultTextButton(
                               onPressed: () {

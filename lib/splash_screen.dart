@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'modules/login/login_screen.dart';
 import 'shared/components/components.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -16,13 +15,12 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    Timer(
-        const Duration(milliseconds: 3000),
-            ()=> navigateAndFinish(context, LoginScreen())
-    );
+    Timer(const Duration(milliseconds: 3000),
+        () => navigateAndFinish(context, const LoginScreen()));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +44,6 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(
               height: 30.0,
             ),
-
             Text(
               'Baruzik',
               style: TextStyle(

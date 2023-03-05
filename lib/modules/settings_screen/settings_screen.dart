@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-
 import '../../home_layout/home_layout.dart';
 import '../../shared/components/components.dart';
 import '../../shared/components/constants.dart';
@@ -21,14 +20,18 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
-        centerTitle: true ,
+        centerTitle: true,
         actions: [
           IconButton(
             padding: const EdgeInsets.only(right: 20.0),
-              onPressed: ()
-          {
-            navigateAndFinish(context, const HomeLayout());
-          }, icon: const Icon(FontAwesomeIcons.thumbsUp,color: Colors.blue,),),
+            onPressed: () {
+              navigateAndFinish(context, const HomeLayout());
+            },
+            icon: const Icon(
+              FontAwesomeIcons.thumbsUp,
+              color: Colors.blue,
+            ),
+          ),
         ],
       ),
       body: Padding(
@@ -40,8 +43,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             customListTile(
               context: context,
-              onTap: ()
-              {
+              onTap: () {
                 navigateTo(context, const AboutUsScreen());
               },
               prefixIcon: Icons.info_outline,
@@ -56,8 +58,7 @@ class SettingsScreen extends StatelessWidget {
 
             customListTile(
               context: context,
-              onTap: ()
-              {
+              onTap: () {
                 navigateTo(context, const ProfileScreen());
               },
               prefixIcon: Icons.person,
@@ -71,8 +72,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             customListTile(
               context: context,
-              onTap: ()
-              {
+              onTap: () {
                 navigateTo(context, const HistoryScreen());
               },
               prefixIcon: Icons.person,
@@ -86,17 +86,14 @@ class SettingsScreen extends StatelessWidget {
             ),
             customListTile(
               context: context,
-              onTap: ()
-              {
+              onTap: () {
                 AppCubit.get(context).changeAppModeTheme();
               },
               prefixIcon: Icons.brightness_4_outlined,
               suffixIcon: AppCubit.get(context).isDark
                   ? FontAwesomeIcons.moon
                   : FontAwesomeIcons.sun,
-              title: AppCubit.get(context).isDark
-                  ? 'Light'
-                  : 'Dark',
+              title: AppCubit.get(context).isDark ? 'Light' : 'Dark',
               subTitle: 'Click to Switch Theme',
             ),
 
@@ -153,12 +150,12 @@ class SettingsScreen extends StatelessWidget {
           ),
           subtitle: Text(
             subTitle,
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
           trailing: Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: Icon(
-                suffixIcon,
+              suffixIcon,
               color: AppCubit.get(context).isDark
                   ? Colors.blue
                   : Colors.deepOrange,

@@ -1,4 +1,5 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,16 +48,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return BlocProvider(
       create: (BuildContext context) => RegisterCubit(),
       child: BlocConsumer<RegisterCubit, RegisterStates>(
-        listener: (context, state)
-        {
+        listener: (context, state) {
           // Listener in create user success state if success navigate and finish to Home Layout
-          if(state is CreateUserSuccessState)
-          {
+          if (state is CreateUserSuccessState) {
             navigateAndFinish(context, const LoginScreen());
           }
         },
-        builder: (context, state)
-        {
+        builder: (context, state) {
           var height = MediaQuery.of(context).size.height;
           city = _area;
           technicalPhone = phoneController.text;
@@ -75,12 +73,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         Text(
                           'Sign Up',
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .bodyText1?.copyWith(
-                            fontSize: 30.0,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    fontSize: 30.0,
+                                  ),
                         ),
 
                         //SizedBox between SignUp Text and Login to Start Text
@@ -90,13 +86,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                         Text(
                           'Register to start connect with your company',
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .bodyText1
-                              ?.copyWith(
-                            color: Colors.grey,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                    color: Colors.grey,
+                                  ),
                         ),
 
                         SizedBox(
@@ -108,19 +101,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: idController,
                           keyboardType: TextInputType.number,
                           label: 'ID',
-                          textStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            color:
-                            AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                          ),
+                          textStyle:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppCubit.get(context).isDark
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                           validator: (String? value) {
-                            if(value!.isEmpty)
-                            {
+                            if (value!.isEmpty) {
                               return 'Please enter your ID';
                             }
                             return null;
                           },
                           prefix: Icons.perm_identity_outlined,
-                          prefixColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
+                          prefixColor: AppCubit.get(context).isDark
+                              ? Colors.black
+                              : Colors.white,
                         ),
                         //SizedBox between Name and Email Address TextFormField
                         SizedBox(
@@ -131,19 +127,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: nameController,
                           keyboardType: TextInputType.name,
                           label: 'Name',
-                          textStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            color:
-                            AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                          ),
+                          textStyle:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppCubit.get(context).isDark
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                           validator: (String? value) {
-                            if(value!.isEmpty)
-                            {
+                            if (value!.isEmpty) {
                               return 'Please enter your Name';
                             }
                             return null;
                           },
                           prefix: Icons.person,
-                          prefixColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
+                          prefixColor: AppCubit.get(context).isDark
+                              ? Colors.black
+                              : Colors.white,
                         ),
 
                         SizedBox(
@@ -163,7 +162,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ),
                             trailing: DropdownButton<String>(
-                              hint: const Text('Area',textAlign: TextAlign.end,),
+                              hint: const Text(
+                                'Area',
+                                textAlign: TextAlign.end,
+                              ),
                               value: areas[_areaValue],
                               items: areas.map((String areaValue) {
                                 return DropdownMenuItem<String>(
@@ -191,23 +193,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: emailController,
                           keyboardType: TextInputType.emailAddress,
                           label: 'Email Address',
-                          textStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            color:
-                            AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                          ),
+                          textStyle:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppCubit.get(context).isDark
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                           validator: (String? value) {
-                            if(value!.isEmpty)
-                            {
+                            if (value!.isEmpty) {
                               return 'Please enter your email address';
                             }
-                            if(!RegExp("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value))
-                            {
+                            if (!RegExp("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                .hasMatch(value)) {
                               return 'Please Enter a Valid Email';
                             }
                             return null;
                           },
                           prefix: Icons.email_outlined,
-                          prefixColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
+                          prefixColor: AppCubit.get(context).isDark
+                              ? Colors.black
+                              : Colors.white,
                         ),
 
                         //SizedBox between Email and Phone TextFormField
@@ -220,19 +225,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: phoneController,
                           keyboardType: TextInputType.phone,
                           label: 'Phone',
-                          textStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            color:
-                            AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                          ),
+                          textStyle:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppCubit.get(context).isDark
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                           validator: (String? value) {
-                            if(value!.isEmpty)
-                            {
+                            if (value!.isEmpty) {
                               return 'Please enter your Phone';
                             }
                             return null;
                           },
                           prefix: Icons.phone,
-                          prefixColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
+                          prefixColor: AppCubit.get(context).isDark
+                              ? Colors.black
+                              : Colors.white,
                         ),
 
                         //SizedBox between Phone and Password TextFormField
@@ -245,25 +253,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           controller: passwordController,
                           keyboardType: TextInputType.visiblePassword,
                           label: 'Password',
-                          textStyle: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            color:
-                            AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                          ),
+                          textStyle:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppCubit.get(context).isDark
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                           validator: (String? value) {
-                            if(value!.isEmpty)
-                            {
+                            if (value!.isEmpty) {
                               return 'Please enter your Password';
                             }
                             return null;
                           },
                           secure: RegisterCubit.get(context).isPasswordShown,
                           prefix: Icons.password,
-                          prefixColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
+                          prefixColor: AppCubit.get(context).isDark
+                              ? Colors.black
+                              : Colors.white,
                           suffix: RegisterCubit.get(context).suffix,
-                          suffixColor: AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                          suffixPressed: ()
-                          {
-                            RegisterCubit.get(context).changePasswordVisibility();
+                          suffixColor: AppCubit.get(context).isDark
+                              ? Colors.black
+                              : Colors.white,
+                          suffixPressed: () {
+                            RegisterCubit.get(context)
+                                .changePasswordVisibility();
                           },
                         ),
 
@@ -275,32 +288,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         // Register Button
                         ConditionalBuilder(
                           condition: state is! RegisterLoadingState,
-                          builder: (context) =>
-                              Container(
-                                alignment: Alignment.center,
-                                child: defaultButton(
-                                  onPressed: () {
-                                    print(_area);
-                                    if(formKey.currentState!.validate())
-                                    {
-                                      RegisterCubit.get(context).userRegister(
-                                        id: idController.text,
-                                        name: nameController.text,
-                                        area: _area,
-                                        email: emailController.text,
-                                        password: passwordController.text,
-                                        phone: phoneController.text,
-                                        image: '',
-                                      );
-                                    }
-                                  },
-                                  text: 'Register',
-                                  backgroundColor:
-                                  AppCubit.get(context).isDark ? Colors.green : Colors.deepOrange,
-                                ),
-                              ),
+                          builder: (context) => Container(
+                            alignment: Alignment.center,
+                            child: defaultButton(
+                              onPressed: () {
+                                if (kDebugMode) {
+                                  print(_area);
+                                }
+                                if (formKey.currentState!.validate()) {
+                                  RegisterCubit.get(context).userRegister(
+                                    id: idController.text,
+                                    name: nameController.text,
+                                    area: _area,
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                    phone: phoneController.text,
+                                    image: '',
+                                  );
+                                }
+                              },
+                              text: 'Register',
+                              backgroundColor: AppCubit.get(context).isDark
+                                  ? Colors.green
+                                  : Colors.deepOrange,
+                            ),
+                          ),
                           fallback: (context) =>
-                          const Center(child: CircularProgressIndicator()),
+                              const Center(child: CircularProgressIndicator()),
                         ),
 
                         //SizedBox between Login Button and Don't have an account
@@ -314,16 +328,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           children: [
                             Text(
                               'Have an account?',
-                              style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                                color:
-                                AppCubit.get(context).isDark ? Colors.black : Colors.white,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                    color: AppCubit.get(context).isDark
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
                             ),
                             defaultTextButton(
                               onPressed: () {
                                 navigateAndFinish(
                                   context,
-                                  LoginScreen(),
+                                  const LoginScreen(),
                                 );
                               },
                               text: 'Login',

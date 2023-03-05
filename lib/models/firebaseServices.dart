@@ -1,3 +1,6 @@
+// ignore_for_file: depend_on_referenced_packages, unnecessary_null_comparison, file_names
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -45,7 +48,9 @@ class FirebaseService {
       navigateTo(context, const HomeLayout());
     }
     updateUserData(authResult.user!);
-    print('signed in' + authResult.user!.displayName!);
+    if (kDebugMode) {
+      print('signed in${authResult.user!.displayName!}');
+    }
     loading.add(false);
     return authResult.user;
   }
@@ -78,13 +83,15 @@ class FirebaseService {
             if (value.user != null) {
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) =>  const HomeLayout()),
+                  MaterialPageRoute(builder: (context) => const HomeLayout()),
                   (route) => false);
             }
           });
         },
         verificationFailed: (FirebaseAuthException e) {
-          print(e.message);
+          if (kDebugMode) {
+            print(e.message);
+          }
         },
         codeSent: (String? verificationID, int? resendToken) {
           verificationCode = verificationID;
@@ -104,7 +111,7 @@ class FirebaseService {
         if (value.user != null) {
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) =>  const HomeLayout()),
+              MaterialPageRoute(builder: (context) => const HomeLayout()),
               (route) => false);
           updateUserData(value.user!);
         }

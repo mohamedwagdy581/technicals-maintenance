@@ -5,7 +5,6 @@ import '../../models/locationServices.dart';
 import '../../shared/components/components.dart';
 import '../finish_request/finishing_request_screen.dart';
 
-
 class RequestDetails extends StatelessWidget {
   final String city;
   final String technicalPhone;
@@ -16,12 +15,12 @@ class RequestDetails extends StatelessWidget {
     super.key,
     required this.id,
     required this.currentIndex,
-    required this.city, required this.technicalPhone,
+    required this.city,
+    required this.technicalPhone,
   });
 
   @override
   Widget build(BuildContext context) {
-    LocationServices locationServices = LocationServices();
     var height = MediaQuery.of(context).size.height;
     final Stream<QuerySnapshot> dataStream = FirebaseFirestore.instance
         .collection(city)
@@ -48,9 +47,6 @@ class RequestDetails extends StatelessWidget {
               itemBuilder: (context, index) {
                 var latitude = storeDocs[currentIndex]['latitude'];
                 var longitude = storeDocs[currentIndex]['longitude'];
-                print('Latitude: $latitude');
-                print('Longitude: $longitude');
-                print('Technical Phone : $technicalPhone');
                 return Column(
                   children: [
                     SizedBox(
@@ -60,7 +56,7 @@ class RequestDetails extends StatelessWidget {
                       'Request From : ',
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText1
+                          .bodyLarge
                           ?.copyWith(fontSize: 22.0),
                     ),
                     Container(
@@ -123,10 +119,11 @@ class RequestDetails extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     defaultTextButton(
-                                      onPressed: ()
-                                      {
+                                      onPressed: () {
                                         //locationServices.goToLocation(latitude: latitude, longitude: longitude);
-                                        MapUtils.openMap(latitude: latitude, longitude: longitude);
+                                        MapUtils.openMap(
+                                            latitude: latitude,
+                                            longitude: longitude);
                                       },
                                       text: 'Tap To Location',
                                     ),
@@ -162,21 +159,16 @@ class RequestDetails extends StatelessWidget {
                     customRequestAction(
                       onTap: () {
                         navigateTo(
-                            context,
-                            FinishingRequestScreen(
-                              id: id,
-                              companyName: storeDocs[currentIndex]
-                                  ['companyName'],
-                              city: storeDocs[currentIndex]
-                                  ['city'],
-                              school: storeDocs[currentIndex]
-                                  ['school'],
-                              customerPhone: storeDocs[currentIndex]
-                              ['phone'],
-                              machine: storeDocs[currentIndex]
-                                  ['machine'],
-                              technicalPhone: technicalPhone ,
-                            ),
+                          context,
+                          FinishingRequestScreen(
+                            id: id,
+                            companyName: storeDocs[currentIndex]['companyName'],
+                            city: storeDocs[currentIndex]['city'],
+                            school: storeDocs[currentIndex]['school'],
+                            customerPhone: storeDocs[currentIndex]['phone'],
+                            machine: storeDocs[currentIndex]['machine'],
+                            technicalPhone: technicalPhone,
+                          ),
                         );
                         //AppCubit.get(context).updateData(status: 'done', id: doneRequestsData!['id']);
                       },
@@ -210,7 +202,7 @@ class RequestDetails extends StatelessWidget {
         ),
         child: Text(
           text,
-          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontSize: 20.0,
                 fontWeight: FontWeight.normal,
               ),

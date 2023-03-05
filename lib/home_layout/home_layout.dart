@@ -50,7 +50,6 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getUserData();
   }
@@ -71,13 +70,13 @@ class _HomeLayoutState extends State<HomeLayout> {
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: IconButton(
-                onPressed: () {
-                  navigateAndFinish(context, const HomeLayout());
-                },
-                icon: const Icon(
-                  Icons.refresh,
-                  size: 30,
-                ),
+              onPressed: () {
+                navigateAndFinish(context, const HomeLayout());
+              },
+              icon: const Icon(
+                Icons.refresh,
+                size: 30,
+              ),
             ),
           ),
         ],

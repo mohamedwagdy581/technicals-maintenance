@@ -1,0 +1,178 @@
+{
+  "project_info": {
+    "project_number": "31784815579",
+    "project_id": "baruzik-maintenance",
+    "storage_bucket": "baruzik-maintenance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31784815579:android:84de0edf9894360aefb5fe",
+        "android_client_info": {
+          "package_name": "com.mohamedwagdy4153.admin_maintenance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31784815579-ifenucp3b6ebmuqeuvqafodlom14p3f0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mohamedwagdy4153.admin_maintenance",
+            "certificate_hash": "108a446aaf66b762b827d34a4a9310aea6a8d3ce"
+          }
+        },
+        {
+          "client_id": "31784815579-qsnjuv5tibadng5ugsjs71144n92jgfr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt64pcQs1HS2UeQQOLNG2VziAthXpbgNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31784815579-qsnjuv5tibadng5ugsjs71144n92jgfr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "31784815579-9ajgdko8t1kqm8l3l1tbt5k3qts42ekm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mohamedwagdy4153.usersMaintenance"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31784815579:android:126edbe4275125d1efb5fe",
+        "android_client_info": {
+          "package_name": "com.mohamedwagdy4153.technical_maintenance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31784815579-qsnjuv5tibadng5ugsjs71144n92jgfr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt64pcQs1HS2UeQQOLNG2VziAthXpbgNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31784815579-qsnjuv5tibadng5ugsjs71144n92jgfr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "31784815579-9ajgdko8t1kqm8l3l1tbt5k3qts42ekm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mohamedwagdy4153.usersMaintenance"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31784815579:android:619fb1019b965dabefb5fe",
+        "android_client_info": {
+          "package_name": "com.mohamedwagdy4153.technicals_maintenance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31784815579-laplbt94ogggial1ougpmgppa50971kt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mohamedwagdy4153.technicals_maintenance",
+            "certificate_hash": "108a446aaf66b762b827d34a4a9310aea6a8d3ce"
+          }
+        },
+        {
+          "client_id": "31784815579-qsnjuv5tibadng5ugsjs71144n92jgfr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt64pcQs1HS2UeQQOLNG2VziAthXpbgNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31784815579-qsnjuv5tibadng5ugsjs71144n92jgfr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "31784815579-9ajgdko8t1kqm8l3l1tbt5k3qts42ekm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mohamedwagdy4153.usersMaintenance"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31784815579:android:ed8d2e000a675399efb5fe",
+        "android_client_info": {
+          "package_name": "com.mohamedwagdy4153.users_maintenance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31784815579-k0kiu6inh1nu3ecgjsipgh75o0lmgatk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mohamedwagdy4153.users_maintenance",
+            "certificate_hash": "108a446aaf66b762b827d34a4a9310aea6a8d3ce"
+          }
+        },
+        {
+          "client_id": "31784815579-qsnjuv5tibadng5ugsjs71144n92jgfr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt64pcQs1HS2UeQQOLNG2VziAthXpbgNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31784815579-qsnjuv5tibadng5ugsjs71144n92jgfr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "31784815579-9ajgdko8t1kqm8l3l1tbt5k3qts42ekm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mohamedwagdy4153.usersMaintenance"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
